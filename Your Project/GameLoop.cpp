@@ -33,7 +33,7 @@ void GameLoop::Loop()
 
 void GameLoop::Update()
 {
-
+	
 }
 void GameLoop::LateUpdate()
 {
@@ -45,6 +45,8 @@ void GameLoop::Draw()
 	// Objects are drawn in a painter's layer fashion meaning the first object drawn is on the bottom, and the last one drawn is on the top
 	// just like a painter would paint onto a canvas
 
+	int x = 800;
+	int y = 450;
 	Graphics::DrawRect({ 400, 400 }, { 450, 400 }, { 160, 65, 255, 255 });
 	Graphics::DrawRect({ 250, 500 }, { 1000, 200 }, { 0, 255, 0, 255 });
 
@@ -52,7 +54,8 @@ void GameLoop::Draw()
 	Graphics::DrawPoint({ 5, 5 }, { 255, 255, 255, 255 });
 
 	Graphics::DrawRing({ 140, 140 }, 50, 25, { 50, 0, 200, 255 });
-	Graphics::DrawCircle({ 800, 450 }, 200, 50, { 0, 255, 255, 150 });
+	Graphics::DrawCircle({ x, y }, 200, 50, { 0, 255, 255, 150 });
+	
 }
 
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)

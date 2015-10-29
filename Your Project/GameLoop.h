@@ -39,6 +39,7 @@ public:
 
 	// Gets called automatically by 'EventHandler' when a key is pressed
 	void OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode);
+
 	// Gets called automatically by 'EventHandler' when a key is released
 	void OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode);
 	// Gets called automatically by 'EventHandler' when the user clicks the 'x' on the window
