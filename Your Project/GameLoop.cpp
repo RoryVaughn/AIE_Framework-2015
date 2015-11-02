@@ -38,6 +38,8 @@ void GameLoop::LateUpdate()
 }
 	int dx = 800;
 	int dy = 450;
+	int dv = 200;
+	int dg = 50;
 
 void GameLoop::Draw()
 {
@@ -52,7 +54,7 @@ void GameLoop::Draw()
 	Graphics::DrawPoint({ 5, 5 }, { 255, 255, 255, 255 });
 
 	Graphics::DrawRing({ 140, 140 }, 50, 25, { 50, 0, 200, 255 });
-	Graphics::DrawCircle({ dx, dy }, 200, 50, { 0, 255, 255, 150 });
+	Graphics::DrawCircle({ dx, dy }, dv, dg, { 0, 255, 255, 150 });
 	
 }
 
@@ -69,6 +71,10 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 	case SDLK_a: dx -= 20; break;
 	case SDLK_s: dy += 20; break;
 	case SDLK_d: dx += 20; break;
+	case SDLK_v: dv += 20; break;
+	case SDLK_b: dv -= 20; break;
+	case SDLK_y: dg += 1; break;
+	case SDLK_t: dg -= 1; break;
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
 
 	default: printf("%s\n",SDL_GetKeyName(ac_sdlSym)); break;
