@@ -1,5 +1,5 @@
 #include "GameLoop.h"
-
+#include <Math.h>
 
 
 void GameLoop::Loop()
@@ -40,21 +40,27 @@ void GameLoop::LateUpdate()
 	int dy = 450;
 	int dv = 200;
 	int dg = 50;
-
+	int p = 200;
+	int y = 1;
+	
+	
 void GameLoop::Draw()
 {
 	// Objects are drawn in a painter's layer fashion meaning the first object drawn is on the bottom, and the last one drawn is on the top
 	// just like a painter would paint onto a canvas
+	
 
+	Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
+	Graphics::DrawRect({ 150, 150 }, { 1000, 200 }, { 173, 155, 34, 255 });
+	Graphics::DrawRect({ 0, 800 }, { 10000, 200 }, { 0, 255, 0, 255 });
+	Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
+	Graphics::DrawRect({ 600, 300 }, { 100, 100 }, { 18, 47, 81, 255 });
+	
 
-	Graphics::DrawRect({ 400, 400 }, { 450, 400 }, { 160, 65, 255, 255 });
-	Graphics::DrawRect({ 250, 500 }, { 1000, 200 }, { 0, 255, 0, 255 });
-
-	Graphics::DrawLine({ 10, 10 }, { 100, 100 }, { 255, 255, 255, 255 });
-	Graphics::DrawPoint({ 5, 5 }, { 255, 255, 255, 255 });
-
-	Graphics::DrawRing({ 140, 140 }, 50, 25, { 50, 0, 200, 255 });
+	
 	Graphics::DrawCircle({ dx, dy }, dv, dg, { 0, 255, 255, 150 });
+	Graphics::DrawCircle({ p, 540 }, 200, 4, { 0, 255, 255, 150 });
+	
 	
 }
 
@@ -75,6 +81,13 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 	case SDLK_b: dv -= 20; break;
 	case SDLK_y: dg += 1; break;
 	case SDLK_t: dg -= 1; break;
+	case SDLK_p: 
+		
+		for (y = 1; y <= 200; y++)
+			{
+				p++;
+			};
+		 break;
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
 
 	default: printf("%s\n",SDL_GetKeyName(ac_sdlSym)); break;
