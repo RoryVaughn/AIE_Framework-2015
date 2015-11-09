@@ -1,7 +1,13 @@
 #include "GameLoop.h"
 #include <Math.h>
+#include <ctime>
 
-
+	int dx = 800;
+	int dy = 450;
+	int dv = 200;
+	int dg = 50;
+	int p = 200;
+	int y = 1;
 void GameLoop::Loop()
 {
 	while (m_bRunning)
@@ -22,7 +28,13 @@ void GameLoop::Loop()
 
 
 			Draw();
-
+			Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
+			Graphics::DrawRect({ 150, 150 }, { 1000, 200 }, { 173, 155, 34, 255 });
+			Graphics::DrawRect({ 0, 800 }, { 10000, 200 }, { 0, 255, 0, 255 });
+			Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
+			Graphics::DrawRect({ 600, 300 }, { 100, 100 }, { 18, 47, 81, 255 });
+			Graphics::DrawCircle({ dx, dy }, dv, dg, { 0, 255, 255, 150 });
+			Graphics::DrawCircle({ p, 540 }, 200, 4, { 0, 255, 255, 150 });
 			Graphics::Flip(); // Required to update the window with all the newly drawn content
 		}
 	
@@ -36,12 +48,7 @@ void GameLoop::LateUpdate()
 {
 
 }
-	int dx = 800;
-	int dy = 450;
-	int dv = 200;
-	int dg = 50;
-	int p = 200;
-	int y = 1;
+
 	
 	
 void GameLoop::Draw()
@@ -50,20 +57,12 @@ void GameLoop::Draw()
 	// just like a painter would paint onto a canvas
 	
 
-	Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
-	Graphics::DrawRect({ 150, 150 }, { 1000, 200 }, { 173, 155, 34, 255 });
-	Graphics::DrawRect({ 0, 800 }, { 10000, 200 }, { 0, 255, 0, 255 });
-	Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
-	Graphics::DrawRect({ 600, 300 }, { 100, 100 }, { 18, 47, 81, 255 });
 	
-
-	
-	Graphics::DrawCircle({ dx, dy }, dv, dg, { 0, 255, 255, 150 });
-	Graphics::DrawCircle({ p, 540 }, 200, 4, { 0, 255, 255, 150 });
 	
 	
 }
 
+					
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
 {
 	/*if (keystate[SDLK_w])
@@ -83,9 +82,16 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 	case SDLK_t: dg -= 1; break;
 	case SDLK_p: 
 		
-		for (y = 1; y <= 200; y++)
+		
 			{
-				p++;
+				auto currentTime = SDL_GetTicks();
+				float deltaTime = 0.f, lastTime = 0.f;
+
+				deltaTime = (currentTime - lastTime) / 1000.f;
+				lastTime = currentTime;
+				float go = 1;
+				go*lastTime/10;
+						p = go;
 			};
 		 break;
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
