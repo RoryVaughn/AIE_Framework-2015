@@ -28,13 +28,60 @@ void GameLoop::Loop()
 
 
 			Draw();
-			Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
-			Graphics::DrawRect({ 150, 150 }, { 1000, 200 }, { 173, 155, 34, 255 });
-			Graphics::DrawRect({ 0, 800 }, { 10000, 200 }, { 0, 255, 0, 255 });
-			Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
-			Graphics::DrawRect({ 600, 300 }, { 100, 100 }, { 18, 47, 81, 255 });
-			Graphics::DrawCircle({ dx, dy }, dv, dg, { 0, 255, 255, 150 });
-			Graphics::DrawCircle({ p, 540 }, 200, 4, { 0, 255, 255, 150 });
+			//Graphics::DrawRect({ 1000, 100 }, { 450, 400 }, { 251, 241, 244, 255 });
+
+
+			//outline
+			Graphics::DrawLine({ 300, 0 }, { 300, 800 }, { 0, 255 , 255, 255 });
+			Graphics::DrawLine({ 300, 800 }, { 1400, 800 }, { 0, 255 , 255, 255 });
+			//verticle lines
+			for (float x = 300; x <= 1400; x = x + 25)
+			{
+				Graphics::DrawLine({ x, 0 }, { x, 800 }, { 0, 255 , 255, 255 });
+			}
+			
+			//horizontal lines
+			for (float y = 0; y <= 800; y = y + 25)
+			{
+				Graphics::DrawLine({ 300, y }, { 1400, y }, { 0, 255 , 255, 255 });
+			}
+
+
+
+
+			//line function
+			
+			float end = 300;
+
+					for (end = 300; end <= 1600; end++)
+					{
+						
+						int stuff = 0;
+						stuff = end;
+
+
+						if (stuff % 25 == 0)
+						{
+							end = stuff;
+							
+							float g = 800;
+							float r = 300;
+					
+						Graphics::DrawLine({ r, g }, { 1400, 0 }, { 0, 255 , 255, 255 });
+
+						g = g - 25;
+						r = r - 25;
+							
+							}
+				}
+
+			
+
+
+
+
+			//Graphics::DrawCircle({ dx, dy }, dv, dg, { 0, 255, 255, 150 });
+			//Graphics::DrawCircle({ p, 540 }, 200, 4, { 0, 255, 255, 150 });
 			Graphics::Flip(); // Required to update the window with all the newly drawn content
 		}
 	
