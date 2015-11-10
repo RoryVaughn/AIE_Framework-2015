@@ -67,12 +67,12 @@ void GameLoop::Loop()
 							float g = 800;
 							float r = 300;
 					
-						Graphics::DrawLine({ r, g }, { 1400, 0 }, { 0, 255 , 255, 255 });
+						Graphics::DrawLine({ r, g }, { 1400, 0 }, { 255, g , 0, 255 });
 
 						g = g - 25;
 						r = r - 25;
 							
-							}
+						}
 				}
 
 			
