@@ -55,6 +55,7 @@ void GameLoop::Loop()
 			float p = 1400;
 			float o = 0;
 
+
 					for (end = 300; end <= 1600; end++)
 					{
 						
