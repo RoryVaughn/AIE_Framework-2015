@@ -50,8 +50,10 @@ void GameLoop::Loop()
 
 
 			//line function
-			
+				float g = 800;
 			float end = 300;
+			float p = 1400;
+			float o = 0;
 
 					for (end = 300; end <= 1600; end++)
 					{
@@ -64,15 +66,14 @@ void GameLoop::Loop()
 						{
 							end = stuff;
 							
-							float g = 800;
-							float r = 300;
+						
 					
-						Graphics::DrawLine({ r, g }, { 1400, 0 }, { 255, g , 0, 255 });
+						Graphics::DrawLine({ end, g }, { p, o }, { 255, 0 , 0, 255 });
 
-						g = g - 25;
-						r = r - 25;
-							
-						}
+					g = g - 25;
+					p = p - 25;
+					o = o - 25;
+						}	
 				}
 
 			
