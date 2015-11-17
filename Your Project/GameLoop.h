@@ -11,6 +11,10 @@
 
 #include "Graphics.h"
 #include "EventHandler.h"
+#include <iostream>
+#include <ctime>
+
+
 
 // This is called inheritance
 // The GameLoop class inherits every member variable and function from 'EventHandler'

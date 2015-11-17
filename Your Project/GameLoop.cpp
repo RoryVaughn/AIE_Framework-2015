@@ -1,12 +1,17 @@
 #include "GameLoop.h"
 #include <Math.h>
 #include <ctime>
-
+int Onemoveup;	
+int Onemovedown;
+int Twomoveup;
+int Twomovedown;
+float PlayOne = 300;
+float PlayTwo = 300;
 	int dx = 800;
 	int dy = 450;
 	int dv = 200;
 	int dg = 50;
-	int p = 200;
+	float p = 200.0f;
 	int y = 1;
 void GameLoop::Loop()
 {
@@ -32,50 +37,121 @@ void GameLoop::Loop()
 
 
 			//outline
-			Graphics::DrawLine({ 300, 0 }, { 300, 800 }, { 0, 255 , 255, 255 });
-			Graphics::DrawLine({ 300, 800 }, { 1400, 800 }, { 0, 255 , 255, 255 });
+			Graphics::DrawLine({ 100, 0 }, { 100, 800 }, { 0, 255 , 255, 255 });
+			Graphics::DrawLine({ 100, 800 }, { 1500, 800 }, { 0, 255 , 255, 255 });
 			//verticle lines
-			for (float x = 300; x <= 1400; x = x + 25)
+			for (float x = 100; x <= 1500; x = x + 25)
 			{
-				Graphics::DrawLine({ x, 0 }, { x, 800 }, { 0, 255 , 255, 255 });
+				Graphics::DrawLine({ x, 0 }, { x, 1000 }, { 0, 255 , 255, 255 });
 			}
 			
 			//horizontal lines
-			for (float y = 0; y <= 800; y = y + 25)
+			for (float y = 0; y <= 1025; y = y + 25)
 			{
-				Graphics::DrawLine({ 300, y }, { 1400, y }, { 0, 255 , 255, 255 });
+				Graphics::DrawLine({ 100, y }, { 1500, y }, { 0, 255 , 255, 255 });
 			}
 
 
 
 
-			//line function
-				float g = 800;
-			float end = 300;
-			float p = 1400;
-			float o = 0;
+			////line function
+			//float g = 800;
+			//float end = 300;
+			//float p = 1400;
+			//float o = 0;
 
 
-					for (end = 300; end <= 1600; end++)
-					{
-						
-						int stuff = 0;
-						stuff = end;
+			//		for (end = 300; end <= 1600; end++)
+			//		{  
+			//			
+			//			int stuff = 0;
+			//			stuff = end;
 
 
-						if (stuff % 25 == 0)
-						{
-							end = stuff;
-							
-						
-					
-						Graphics::DrawLine({ end, g }, { p, o }, { 255, 0 , 0, 255 });
+			//			if (stuff % 25 == 0)
+			//			{
+			//				end = stuff;
+			//				
+			//			
+			//		
+			//			Graphics::DrawLine({ end, g }, { p, o }, { 255, 0 , 0, 255 });
 
-					g = g - 25;
-					p = p - 25;
-					o = o - 25;
-						}	
-				}
+			//		g = g - 25;
+			//		p = p - 25;
+			//		o = o - 25;
+			//			}	
+			//	}
+
+			//
+
+			int CurrentTime = 0;
+			int PreviousTime;
+			PreviousTime = CurrentTime;
+			int DeltaTime;
+			DeltaTime = CurrentTime - PreviousTime;
+			PreviousTime = CurrentTime;
+			
+			std::cout << CurrentTime;
+			std::cout << PreviousTime;
+		
+
+		
+
+	
+		
+				//PLAYER ONE
+				Graphics::DrawRect({ 50, PlayOne }, { 50, 300 }, { 251, 241, 244, 255 });
+				//... stuff to update using deltaTime
+
+
+
+
+
+			//PLAYER TWO
+				Graphics::DrawRect({ 1500, PlayTwo }, { 50, 300 }, { 251, 241, 244, 255 });
+
+
+
+
+				//BALL
+				Graphics::DrawCircle({ 800, 450 }, 50, 50, { 0, 255, 255, 250 });
+
+
+				//boolian checks that make the panels move
+		if (Onemoveup == 1)
+		{
+			if (PlayOne <= 0)
+			{
+				PlayOne = 0;
+			}
+
+			PlayOne -= 20;
+			
+		}
+		if (Onemovedown == 1)
+		{
+			if (PlayOne >= 600)
+			{
+				PlayOne = 600;
+			}
+			PlayOne += 20;
+		}
+		if (Twomoveup == 1)
+		{
+			if (PlayTwo <= 0)
+			{
+				PlayTwo = 0;
+			}
+			PlayTwo -= 20;
+		}
+		if (Twomovedown == 1)
+		{
+			if (PlayTwo >= 600)
+			{
+				PlayTwo = 600;
+			}
+			PlayTwo += 20;
+		}
 
 			
 
@@ -89,14 +165,6 @@ void GameLoop::Loop()
 	
 }
 
-void GameLoop::Update()
-{
-	
-}
-void GameLoop::LateUpdate()
-{
-
-}
 
 	
 	
@@ -111,7 +179,9 @@ void GameLoop::Draw()
 	
 }
 
-					
+
+	
+				
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
 {
 	/*if (keystate[SDLK_w])
@@ -121,28 +191,13 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 	
 	switch (ac_sdlSym)
 	{
-	case SDLK_w: dy -= 20; break;
-	case SDLK_a: dx -= 20; break;
-	case SDLK_s: dy += 20; break;
-	case SDLK_d: dx += 20; break;
-	case SDLK_v: dv += 20; break;
-	case SDLK_b: dv -= 20; break;
-	case SDLK_y: dg += 1; break;
-	case SDLK_t: dg -= 1; break;
-	case SDLK_p: 
 		
-		
-			{
-				auto currentTime = SDL_GetTicks();
-				float deltaTime = 0.f, lastTime = 0.f;
+	case SDLK_w:  Onemoveup = 1; break;
+	case SDLK_s:  Onemovedown = 1; break;
+	case SDLK_o:  Twomoveup = 1; break;
+	case SDLK_l:  Twomovedown = 1; break;
 
-				deltaTime = (currentTime - lastTime) / 1000.f;
-				lastTime = currentTime;
-				float go = 1;
-				go*lastTime/10;
-						p = go;
-			};
-		 break;
+	
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
 
 	default: printf("%s\n",SDL_GetKeyName(ac_sdlSym)); break;
@@ -152,6 +207,10 @@ void GameLoop::OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const
 {
 	switch (ac_sdlSym)
 	{
+	case SDLK_w:  Onemoveup = 0; break;
+	case SDLK_s:  Onemovedown = 0; break;
+	case SDLK_o:  Twomoveup = 0; break;
+	case SDLK_l:  Twomovedown = 0; break;
 	default: break;
 	}
 }
