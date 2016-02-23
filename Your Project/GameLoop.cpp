@@ -97,7 +97,7 @@ void GameLoop::Loop()
 
 				//PLAYER TWO
 				Graphics::DrawRect({ yeet2, PlayTwo }, { 50, 300 }, { 251, 241, 244, 255 });
-
+				Graphics::DrawRect({ yeet2, PlayTwo }, { 50, 300 }, { 251, 241, 244, 255 });
 				std::cout << f << " ";
 				//BALL
 				
